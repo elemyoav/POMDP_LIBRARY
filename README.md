@@ -3,24 +3,26 @@
 1. Once you have cloned the directory and are in VSCode, run:
    ```bash
    python3 -m venv venv
+   ```
 
     Activate the virtual environment:
 
-    bash
+    ```bash
 
 source ./venv/bin/activate
-
+```
 Install the requirements:
 
-bash
+```bash
 
 pip install -r requirements.txt
-
+```
 Run the main script:
 
-bash
+```bash
 
     python3 ./main.py
+```
 
 If everything was set up correctly, you will see an insanely large JSON on the screen. This means everything went okay.
 How to Write an Environment
