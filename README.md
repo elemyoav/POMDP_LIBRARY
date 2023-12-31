@@ -1,48 +1,64 @@
-# How to Run the Code
+How to Run the Code
 
-1. Once you have cloned the directory and are in VSCode, run:
-   ```bash
-   python3 -m venv venv
-   
-Activate the virtual environment:
+Hey there! Here's a quick guide to get you started with the codebase:
+Step 1: Set Up Your Environment
+
+After cloning the directory and opening it in VSCode, you'll need to set up a virtual environment. This helps in managing dependencies and keeps things tidy. Run the following command:
+
+bash
+
+python3 -m venv venv
+
+Step 2: Activate the Virtual Environment
+
+Next, activate the virtual environment. This step is crucial to ensure that all the dependencies are correctly installed in this isolated environment. Run:
 
 bash
 
 source ./venv/bin/activate
 
-Install the requirements:
+Step 3: Install Dependencies
+
+Now, let's install all the required dependencies listed in the requirements.txt file. Run:
 
 bash
 
 pip install -r requirements.txt
 
-Run the main script:
+Step 4: Run the Main Script
+
+Finally, to see the magic happen, run the main script:
 
 bash
 
-    python3 ./main.py
+python3 ./main.py
 
-If everything was set up correctly, you will see an insanely large JSON on the screen. This means everything went okay.
+If all goes well, you'll see a large JSON output on your screen. That's a sign that everything is set up correctly!
 How to Write an Environment
 
-To be able to implement an environment, you need to read the documentation: Ray RLlib Environments. This is simpler here but still uses a different interface.
+To create your own environment, you'll need to dive into some documentation. Don't worry, it's not as daunting as it sounds! Check out the Ray RLlib Environments Documentation. It's simpler than other interfaces and should get you up to speed quickly.
 How to Learn RLlib and Ray
 
-There are 3 levels of seriousness you can take it to:
-Minimum
+Depending on how deep you want to go, there are three levels of commitment you can choose from:
+Minimum Effort
 
-Read the entire RLlib documentation: RLlib Docs. It's really important and short (about a 1-hour read). You will have a good enough understanding to make the code run. Make sure you focus on the Environment section since this is the only part we actually code in.
-Medium
+For a quick start, read through the entire RLlib documentation. It's concise and should take about an hour. Focus on the Environment section since that's what we'll be working with mostly. Check it out here: RLlib Documentation.
+Medium Effort
 
-Read the entire Ray documentation: Ray Overview. This will take about 2-4 hours. It's the best option if you have the time, as we will be using other functionalities of this library, such as collecting metrics.
-Extreme
+If you have more time, I recommend going through the entire Ray documentation. This will take about 2-4 hours but will give you a comprehensive understanding of the library. It's worth it if you're planning to dive deeper into our project. Here's the link: Ray Overview.
+Maximum Effort
 
-Read an entire book on the library: Learning Ray (PDF). This is a big commitment, but you will become an expert in the library. The book is beginner-friendly and structured like a course. However, it's time-consuming.
+And for those who really want to master this library, there's a whole book on Ray! It's quite an undertaking, but by the end of it, you'll be an expert. The book is beginner-friendly and builds up from the basics. However, it's a significant time investment. If you're up for it, here's the book: Learning Ray (PDF).
 
-You can also look at how I implemented the tiger environment in the env/tiger.py file, although it is not well documented yet and quite complex.
-Plan
+Also, feel free to peek at the env/tiger.py file where I've implemented the tiger environment. Just a heads up, it's a bit rough around the edges and not fully documented yet.
+Project Plan
 
- Create and test box pushing and rock sampling (MultiAgentEnv only).
- Create a function to convert a MultiAgentEnv to a Gym Env.
- Learn how to collect metrics from a run.
- Run the experiments and collect all metrics.
+Here's what we're aiming to achieve:
+
+ Create and test environments like box pushing and rock sampling, specifically using MultiAgentEnv.
+ Develop a function to convert a MultiAgentEnv to a Gym Env.
+ Learn how to effectively collect metrics from a run.
+
+     Conduct the experiments and gather all the necessary metrics.
+
+Let's get started!
