@@ -1,4 +1,3 @@
-import gymnasium as gym
 import ray
 from ray.rllib.algorithms import qmix
 from envs.tiger import DecTigerEnv
