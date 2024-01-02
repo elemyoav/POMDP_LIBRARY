@@ -21,7 +21,7 @@ class DecTigerEnv(MultiAgentEnv):
 
         # Define the observation space as a tuple of two elements
         self.observation_space = gym.spaces.Tuple(
-            (element_space, element_space))  # M
+            (element_space, element_space))# M
         # Open left, open right, listen_left, listen_right
         self.action_space = gym.spaces.Discrete(4)# M
         
