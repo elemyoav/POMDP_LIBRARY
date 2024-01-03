@@ -6,8 +6,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime
 import argparse
+from envs.team_problem_converter import convert_to_gym_env
+import env_creators
 
-Env = DecTigerEnv
+Env = 'tiger'
 Config = PPOConfig
 EXPERIMENT_NAME = 'PPO_Tiger' + datetime.now().strftime("%Y%m%d-%H%M%S")
 ray.init()
@@ -18,24 +20,25 @@ config = (
     .framework('torch')\
     .rollouts(create_env_on_local_worker=True)\
     .debugging(seed=0, log_level='ERROR')
-    .environment(DecTigerEnv)
 )
 
-config = config.multi_agent(
-    policies=['policy_0', 'policy_1'],
-    policy_mapping_fn=lambda agent_id, _, **kwargs: 'policy_0' if agent_id == 'agent_0' else 'policy_1',
-)
+if Env.startswith('dec'):
+    config = config.multi_agent(
+        policies=['policy_0', 'policy_1'],
+        policy_mapping_fn=lambda agent_id, _, **kwargs: 'policy_0' if agent_id == 'agent_0' else 'policy_1',
+    )
 
-alg = config.build()
+alg = config.build(env=Env)
 rewards1 = []
 rewards2 = []
 
 print("Starting training...")
 for i in range(100):
     result = alg.train()
-    rewards1.append(result['policy_reward_mean']['policy_0'])
-    rewards2.append(result['policy_reward_mean']['policy_1'])
-    print('iteration: ', i, ' episode_reward_mean: ', result['episode_reward_mean'])
+    # rewards1.append(result['policy_reward_mean']['policy_0'])
+    # rewards2.append(result['policy_reward_mean']['policy_1'])
+    rewards1.append(result)
+    print(f'batch{i}:', ' episode_reward_mean: ', result['episode_reward_mean'])
 
 
 alg.save(f'./results/checkpoints/{EXPERIMENT_NAME}')
