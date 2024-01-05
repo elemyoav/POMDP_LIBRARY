@@ -28,18 +28,17 @@ This will start the code with the algorithm and environment you supplied and wil
 
 The possible arguments are:
 
-- `--algo`: The algorithm to use (default 'ppo').
-- `--env`: The environment for training (default 'box_pushing').
+- `--algo`: The algorithm to use (default 'ppo', choose from 'ppo', 'marwil', 'appo', 'impala', 'bcc', 'cql', 'dqn', 'sacc').
+- `--env`: The environment for training (default 'box_pushing', choose from 'dec_box_pushing', 'box_pushing', 'dec_tiger', 'tiger').
 - `--training_iterations`: Number of training iterations (default 2000).
 - `--gamma`: Discount factor for future rewards (default 0.95).
 - `--lr`: Learning rate (default 5e-5).
 - `--batch_size`: Size of the training batch (default 32).
 - `--epsilon`, `--epsilon_decay`, `--epsilon_min`: Parameters for exploration strategy.
-- `--framework`: The underlying framework (default 'torch').
+- `--framework`: The underlying framework (default 'torch', possibilities are 'torch', 'tf', 'tf2').
 - `--seed`: Random seed (default 0).
 - `--log_level`: Logging level (default 'ERROR').
 
-> **Note**: The code snippet for parsing the arguments is not shown here, but you can understand each argument's possibilities from the provided code snippet.
 
 ## Reviewing Results
 
