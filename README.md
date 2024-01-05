@@ -1,5 +1,85 @@
-<div class="markdown prose w-full break-words dark:prose-invert dark"><p>Certainly! Here's the content written in a friendly and direct manner, suitable for a Markdown (.md) file:</p><hr><h1>How to Run the Code</h1><p>Hey there! Here's a quick guide to get you started with the codebase:</p><h3>Step 1: Set Up Your Environment</h3><p>After cloning the directory and opening it in VSCode, you'll need to set up a virtual environment. This helps in managing dependencies and keeps things tidy. Run the following command:</p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">python3 -m venv venv
-</code></div></div></pre><h3>Step 2: Activate the Virtual Environment</h3><p>Next, activate the virtual environment. This step is crucial to ensure that all the dependencies are correctly installed in this isolated environment. Run:</p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">source</span> ./venv/bin/activate
-</code></div></div></pre><h3>Step 3: Install Dependencies</h3><p>Now, let's install all the required dependencies listed in the <code>requirements.txt</code> file. Run:</p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">pip install -r requirements.txt
-</code></div></div></pre><h3>Step 4: Run the Main Script</h3><p>Finally, to see the magic happen, run the main script:</p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">python3 ./main.py
-</code></div></div></pre><p>If all goes well, you'll see a large JSON output on your screen. That's a sign that everything is set up correctly!</p><h1>How to Write an Environment</h1><p>To create your own environment, you'll need to dive into some documentation. Don't worry, it's not as daunting as it sounds! Check out the <a target="_new" href="https://docs.ray.io/en/latest/rllib/rllib-env.html">Ray RLlib Environments Documentation</a>. It's simpler than other interfaces and should get you up to speed quickly.</p><h1>How to Learn RLlib and Ray</h1><p>Depending on how deep you want to go, there are three levels of commitment you can choose from:</p><h3>Minimum Effort</h3><p>For a quick start, read through the entire RLlib documentation. It's concise and should take about an hour. Focus on the <a target="_new" href="https://docs.ray.io/en/latest/rllib/rllib-env.html">Environment section</a> since that's what we'll be working with mostly. Check it out here: <a target="_new" href="https://docs.ray.io/en/latest/rllib/index.html">RLlib Documentation</a>.</p><h3>Medium Effort</h3><p>If you have more time, I recommend going through the entire Ray documentation. This will take about 2-4 hours but will give you a comprehensive understanding of the library. It's worth it if you're planning to dive deeper into our project. Here's the link: <a target="_new" href="https://docs.ray.io/en/latest/ray-overview/index.html">Ray Overview</a>.</p><h3>Maximum Effort</h3><p>And for those who really want to master this library, there's a whole book on Ray! It's quite an undertaking, but by the end of it, you'll be an expert. The book is beginner-friendly and builds up from the basics. However, it's a significant time investment. If you're up for it, here's the book: <a target="_new" href="https://assets.ctfassets.net/xjan103pcp94/7gZbuzVlgVWMfynUTQstOc/da2cfa91b84184fd5f653803e5fc8443/Learning_Ray.pdf">Learning Ray (PDF)</a>.</p><p>Also, feel free to peek at the <code>env/tiger.py</code> file where I've implemented the tiger environment. Just a heads up, it's a bit rough around the edges and not fully documented yet.</p><h1>Project Plan</h1><p>Here's what we're aiming to achieve:</p><ul class="contains-task-list"><li class="task-list-item"><input type="checkbox" disabled=""> Create and test environments like box pushing and rock sampling, specifically using MultiAgentEnv.</li><li class="task-list-item"><input type="checkbox" disabled=""> Develop a function to convert a MultiAgentEnv to a Gym Env.</li><li class="task-list-item"><input type="checkbox" disabled=""> Learn how to effectively collect metrics from a run.</li><li class="task-list-item"><input type="checkbox" disabled=""> Conduct the experiments and gather all the necessary metrics.</li></ul><p>Let's get started!</p><hr><p>Feel free to copy this into a Markdown file for your GitHub repository. It's written in a conversational style, as if I'm directly guiding you through the steps.</p></div>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            color: #2E86C1;
+            font-size: 24px;
+        }
+        .subheader {
+            color: #2874A6;
+            font-size: 20px;
+        }
+        .code {
+            background-color: #F4F6F6;
+            padding: 10px;
+            border-left: 3px solid #2E86C1;
+            font-family: monospace;
+        }
+        .note {
+            background-color: #F9E79F;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        a {
+            color: #3498DB;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">How To Use The Code</div>
+    
+    <div class="subheader">Setting Up the Environment</div>
+    <p>Follow these steps to set up your environment:</p>
+    <div class="code">
+        python3 -m venv venv<br>
+        source ./venv/bin/activate<br>
+        pip install -r requirements.txt
+    </div>
+
+    <div class="subheader">Running the Code</div>
+    <p>There are two entry points to the code: <code>train.py</code> and <code>run.py</code>.</p>
+    <p><b>Starting with <code>train.py</code>:</b></p>
+    <div class="code">
+        python3 main.py --args...
+    </div>
+    <p>This will start the code with the algorithm and environment you supplied and will train the code.</p>
+
+    <p><b>Arguments Explained:</b></p>
+    <p>The possible arguments are:</p>
+    <ul>
+        <li><code>--algo</code>: The algorithm to use (default 'ppo').</li>
+        <li><code>--env</code>: The environment for training (default 'box_pushing').</li>
+        <li><code>--training_iterations</code>: Number of training iterations (default 2000).</li>
+        <li><code>--gamma</code>: Discount factor for future rewards (default 0.95).</li>
+        <li><code>--lr</code>: Learning rate (default 5e-5).</li>
+        <li><code>--batch_size</code>: Size of the training batch (default 32).</li>
+        <li><code>--epsilon</code>, <code>--epsilon_decay</code>, <code>--epsilon_min</code>: Parameters for exploration strategy.</li>
+        <li><code>--framework</code>: The underlying framework (default 'torch').</li>
+        <li><code>--seed</code>: Random seed (default 0).</li>
+        <li><code>--log_level</code>: Logging level (default 'ERROR').</li>
+    </ul>
+
+    <div class="note">
+        Note: The code snippet for parsing the arguments is not shown here, but you can understand each argument's possibilities from the provided code snippet.
+    </div>
+
+    <div class="subheader">Reviewing Results</div>
+    <p>After running the code, check the <code>results</code> directory. It contains two subdirectories: <code>checkpoints</code> and <code>plots</code>. Metrics on the run can be found in <code>plots</code>, and the trained algorithm is saved under <code>results/plots||checkpoints/algo_env/algo_env_creation_date</code>.</p>
+
+    <p><b>Using <code>run.py</code>:</b></p>
+    <p>To load the trained algorithm and policies, modify the <code>run.py</code> file with the path to the checkpoint and the desired environment.</p>
+    <div class="note">
+        Note: The <code>run.py</code> file is just an example. Use it as a template to play around with and understand how to use the restored algorithm.
+    </div>
+
+    <div class="subheader">Further Documentation</div>
+    <p>For more information on how to use the <code>run.py</code> file and algorithms, refer to the <a href="https://docs.ray.io/en/latest/rllib.html">RLlib documentation</a>. Consult the algorithms page in the documentation to understand which algorithms support multiagent training.</p>
+
+</body>
+</html>
