@@ -53,4 +53,6 @@ To load the trained algorithm and policies, modify the `run.py` file with the pa
 
 ## Further Documentation
 
-For more information on how to use the `run.py` file and algorithms, refer to the [RLlib documentation](https://docs.ray.io/en/latest/rllib.html). Consult the algorithms page in the documentation to understand which algorithms support multiagent training.
+For more information on how to use the `run.py` file and algorithms, refer to the [RLlib documentation](https://docs.ray.io/en/master/rllib/index.html). Consult the algorithms page in the documentation to understand which algorithms support multiagent training.
+
+if you want to learn how to use rllib please try this [RLlib Course](https://applied-rl-course.netlify.app/)
