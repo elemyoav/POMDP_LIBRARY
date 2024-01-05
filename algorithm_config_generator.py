@@ -1,10 +1,31 @@
 from ray.rllib.algorithms import PPOConfig
+from ray.rllib.algorithms import MARWILConfig
+from ray.rllib.algorithms import APPOConfig
+from ray.rllib.algorithms import ImpalaConfig
+from ray.rllib.algorithms import BCConfig
+from ray.rllib.algorithms import CQLConfig
+from ray.rllib.algorithms import DQNConfig
+from ray.rllib.algorithms import SACConfig
 from args import ARGS
 from datetime import datetime
 
 def get_config(name='ppo'):
     if name == 'ppo':
         return PPOConfig()
+    elif name == 'marwil':
+        return MARWILConfig()
+    elif name == 'appo':
+        return APPOConfig()
+    elif name == 'impala':
+        return ImpalaConfig()
+    elif name == 'bc':
+        return BCConfig()
+    elif name == 'cql':
+        return CQLConfig()
+    elif name == 'dqn':
+        return DQNConfig()
+    elif name == 'sacc':
+        return SACConfig()
     else:
         raise NotImplementedError(f'config for {name} not implemented')
 
