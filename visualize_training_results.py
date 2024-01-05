@@ -1,5 +1,4 @@
 from algorithm_config_generator import EXPERIMENT_NAME
-from train import TRAINING_RESULTS
 import matplotlib.pyplot as plt
 
 
@@ -35,13 +34,9 @@ def plot_episode_len_mean(results):
     plt.title(f'Avg Episode Length over {len(results)} Iterations')
     plt.savefig(f'./results/plots/{EXPERIMENT_NAME}/avg_episode_length.png')
 
-def plot_results():
-    plot_funcs = [
-        plot_episode_reward_mean,
-        plot_episode_reward_min,
-        plot_episode_reward_max,
-        plot_episode_len_mean,
-    ]
 
-    for plot_func in plot_funcs:
-        plot_func(TRAINING_RESULTS)
+def plotter(results):
+    plot_episode_reward_mean(results)
+    plot_episode_reward_min(results)
+    plot_episode_reward_max(results)
+    plot_episode_len_mean(results)
