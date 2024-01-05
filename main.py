@@ -8,8 +8,10 @@ from datetime import datetime
 import argparse
 from envs.team_problem_converter import convert_to_gym_env
 import env_creators
+from ray.tune.logger import pretty_print
+from pprint import pprint
 
-Env = 'tiger'
+Env = 'dec_box_pushing'
 Config = PPOConfig
 EXPERIMENT_NAME = 'PPO_Tiger' + datetime.now().strftime("%Y%m%d-%H%M%S")
 ray.init()
@@ -19,7 +21,12 @@ config = (
      Config()\
     .framework('torch')\
     .rollouts(create_env_on_local_worker=True)\
-    .debugging(seed=0, log_level='ERROR')
+    .debugging(seed=0, log_level='ERROR')\
+    .training(
+        gamma=0.9,
+        lr = 0.01,
+        train_batch_size=256,   
+    )
 )
 
 if Env.startswith('dec'):
@@ -35,10 +42,9 @@ rewards2 = []
 print("Starting training...")
 for i in range(100):
     result = alg.train()
-    # rewards1.append(result['policy_reward_mean']['policy_0'])
-    # rewards2.append(result['policy_reward_mean']['policy_1'])
-    rewards1.append(result)
-    print(f'batch{i}:', ' episode_reward_mean: ', result['episode_reward_mean'])
+    rewards1.append(result['policy_reward_mean']['policy_0'])
+    rewards2.append(result['policy_reward_mean']['policy_1'])
+    print(pretty_print(result))
 
 
 alg.save(f'./results/checkpoints/{EXPERIMENT_NAME}')
