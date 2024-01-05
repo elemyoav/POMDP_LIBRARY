@@ -1,15 +1,20 @@
-import ray
 import env_creators as env_creators
-from algorithm_config_generator import ALGORITHM, EXPERIMENT_NAME, TRAINING_ITERATIONS
-from visualize_training_results import plotter
+from tqdm import tqdm
+from plotter import plotter
 import os
+from algorithm_config_generator import ALGORITHM, EXPERIMENT_NAME, TRAINING_ITERATIONS
+from pprint import pprint
 
-ray.init()
+path = os.path.join(os.getcwd(), 'results', 'plots', EXPERIMENT_NAME)
+if not os.path.exists(path):
+    print(f"Experiment {EXPERIMENT_NAME} does not exist. Creating new experiment...")
+    os.makedirs(path)
+
 TRAINING_RESULTS = []
 checkpoint_dir = f'./results/checkpoints/{EXPERIMENT_NAME}'
 print("Starting training...")
 try:
-    for i in range(TRAINING_ITERATIONS):
+    for i in tqdm(range(TRAINING_ITERATIONS), 'running_training_step'):
         result = ALGORITHM.train()
         TRAINING_RESULTS.append(result)
 

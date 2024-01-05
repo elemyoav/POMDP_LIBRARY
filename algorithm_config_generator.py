@@ -44,5 +44,5 @@ alg_config = add_training(alg_config, gamma=ARGS.gamma, lr=ARGS.lr)
 alg_config = add_multi_agent(alg_config, ARGS.env)
 
 ALGORITHM = build_with_env(alg_config, ARGS.env)
-EXPERIMENT_NAME = ARGS.algo + '_' + ARGS.env + '_' + datetime.now().strftime("%Y%m%d-%H%M%S")
+EXPERIMENT_NAME = ARGS.algo + '_' + ARGS.env + '/' + ARGS.algo + '_' +ARGS.env + '_' + datetime.now().strftime("%Y%m%d-%H%M%S")
 TRAINING_ITERATIONS = ARGS.training_iterations
