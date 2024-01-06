@@ -46,7 +46,7 @@ The possible arguments are:
 
 ## Reviewing Results
 
-After running the code, check the `results` directory. It contains two subdirectories: `checkpoints` and `plots`. Metrics on the run can be found in `plots`, and the trained algorithm is saved under `results/plots||checkpoints/algo_env/algo_env_creation_date`.
+After running the code, check the `results` directory. It contains two subdirectories: `checkpoints` and `plots`. Metrics on the run can be found in `results/plots/$ALGO_$ENV/$ALGO_$ENV_$DATE/`., and the trained algorithm is saved under `results/checkpoints/$ALGO_$ENV/$ALGO_$ENV_$DATE/`.
 
 ### Using `run.py`:
 
