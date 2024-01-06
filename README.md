@@ -13,7 +13,6 @@ source ./venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-`
 
 ## Running the Code
 
