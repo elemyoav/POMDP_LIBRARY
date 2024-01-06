@@ -1,7 +1,7 @@
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--algo', type=str, default='impala')
+parser.add_argument('--algo', type=str, default='ppo')
 parser.add_argument('--env', type=str, default='dec_box_pushing')
 parser.add_argument('--training_iterations', type=int, default=2000)
 parser.add_argument('--gamma', type=float, default=0.95)
