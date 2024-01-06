@@ -7,8 +7,12 @@ Follow these steps to set up your environment:
 ```bash
 python3 -m venv venv
 ```
+```bash
 source ./venv/bin/activate
+```
+```bash
 pip install -r requirements.txt
+```
 `
 
 ## Running the Code
