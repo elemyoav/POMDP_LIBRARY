@@ -23,7 +23,7 @@ There are two entry points to the code: `train.py` and `run.py`.
 Run the following command:
 
 ```bash
-python3 main.py --args...
+python3 train.py --args...
 ```
 
 This will start the code with the algorithm and environment you supplied and will train the code.
