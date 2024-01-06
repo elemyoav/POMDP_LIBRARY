@@ -30,7 +30,7 @@ def get_config(name='ppo'):
         raise NotImplementedError(f'config for {name} not implemented')
 
 def build_with_env(algo_config, env_name):
-    if env_name not in ['dec_tiger', 'tiger', 'dec_box_pushing', 'box_pushing']:
+    if env_name not in ['dec_tiger', 'tiger', 'dec_box_pushing', 'box_pushing', 'dec_rock_sampling', 'rock_sampling']:
         raise NotImplementedError(f'env {env_name} not implemented')
     
     return algo_config.build(env=env_name)

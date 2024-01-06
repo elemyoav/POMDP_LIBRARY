@@ -1,5 +1,6 @@
 
-import numpy as np
+import random
+from numpy import array
 
 NULL_QUALITY = 0
 BAD_QUALITY = 1
@@ -25,9 +26,9 @@ class Grid:
 
     
     def reset_board(self):
-        self.rock_positions = np.random.choice(self.grid, self.num_rocks, replace=False)
-        self.rover1_position = np.random.choice(self.rover_1_grid)
-        self.rover2_position = np.random.choice(self.rover_2_grid)
+        self.rock_positions = random.sample(self.grid, self.num_rocks)
+        self.rover1_position = random.choice(self.rover_1_grid)
+        self.rover2_position = random.choice(self.rover_2_grid)
         self.rock_quality = [ GOOD_QUALITY for _ in range(self.num_rocks) ]
 
     def get_rover1_position(self):
@@ -74,16 +75,17 @@ class Grid:
         rock_position = self.rock_positions[rock_id]
         prob = self.observation_quality_function(self.rover1_position, rock_position)
 
-        if np.random.random() < prob:
+        if random.random() < prob:
             return self.rock_quality[rock_id]
         else:
-            return np.random.choice([GOOD_QUALITY, BAD_QUALITY])
+            return random.choice([GOOD_QUALITY, BAD_QUALITY])
     
-    def sample_rock(self, rover_pos, rock_id):
+    def sample_rock(self, rover_id, rock_id):
         rock_position = self.rock_positions[rock_id]
+        rover_pos = self.rover1_position if rover_id == 'agent_0' else self.rover2_position
         
         if rover_pos != rock_position:
-            return None
+            return BAD_QUALITY
         
         rock_quality = self.rock_quality[rock_id]
 
@@ -97,16 +99,16 @@ class Grid:
         return self.is_rover1_area_clear() and self.is_rover2_area_clear() and self.is_shared_area_clear()
     
     def move_rover(self, rover_id, direction):
-        if rover_id == 'rover1':
+        if rover_id == 'agent_0':
             self.move_rover_1(direction)
-        elif rover_id == 'rover2':
+        elif rover_id == 'agent_1':
             self.move_rover_2(direction)
 
     def get_rover_position(self, rover_id):
-        if rover_id == 'rover1':
-            return self.rover1_position
-        elif rover_id == 'rover2':
-            return self.rover2_position
+        if rover_id == 'agent_0':
+            return array(self.rover1_position)
+        elif rover_id == 'agent_1':
+            return array(self.rover2_position)
         
     def is_rover1_area_clear(self):
         # check if all rocks in rover1 area are bad
