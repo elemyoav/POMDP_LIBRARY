@@ -2,7 +2,7 @@
 
 ## Setting Up the Environment
 
-Follow these steps to set up your environment:
+Once you cloned th repository on your local machine cd into it and run the following commands in the terminal:
 
 ```bash
 python3 -m venv venv
