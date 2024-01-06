@@ -6,7 +6,7 @@ from ray.rllib.algorithms import BCConfig
 from ray.rllib.algorithms import CQLConfig
 from ray.rllib.algorithms import DQNConfig
 from ray.rllib.algorithms import SACConfig
-from args import ARGS
+from src.args import ARGS
 from datetime import datetime
 
 def get_config(name='ppo'):

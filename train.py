@@ -1,8 +1,8 @@
-import env_creators as env_creators
+import src.env_creators as env_creators
 from tqdm import tqdm
-from plotter import plotter
+from src.plotter import plotter
 import os
-from algorithm_config_generator import ALGORITHM, EXPERIMENT_NAME, TRAINING_ITERATIONS
+from src.algorithm_config_generator import ALGORITHM, EXPERIMENT_NAME, TRAINING_ITERATIONS
 from pprint import pprint
 
 path = os.path.join(os.getcwd(), 'results', 'plots', EXPERIMENT_NAME)

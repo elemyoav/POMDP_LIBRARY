@@ -2,7 +2,7 @@ import ray
 from ray.rllib.algorithms import Algorithm
 from envs.box_pushing.box_pushing import DecBoxPushing
 from envs.team_problem_converter import convert_to_gym_env
-import env_creators
+import src.env_creators as env_creators
 
 def run(checkpoint_path, env, num_episodes=1000):
     print('loading checkpoint')
