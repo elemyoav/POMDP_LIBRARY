@@ -7,7 +7,8 @@ from pprint import pprint
 
 path = os.path.join(os.getcwd(), 'results', 'plots', EXPERIMENT_NAME)
 if not os.path.exists(path):
-    print(f"Experiment {EXPERIMENT_NAME} does not exist. Creating new experiment...")
+    print(
+        f"Experiment {EXPERIMENT_NAME} does not exist. Creating new experiment...")
     os.makedirs(path)
 
 TRAINING_RESULTS = []
@@ -20,7 +21,6 @@ try:
 
 except KeyboardInterrupt:
     pass
-
 
 
 ALGORITHM.save(checkpoint_dir)
