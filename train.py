@@ -17,6 +17,7 @@ print("Starting training...")
 try:
     for i in tqdm(range(TRAINING_ITERATIONS), 'running_training_step'):
         result = ALGORITHM.train()
+        pprint(result)
         TRAINING_RESULTS.append(result)
 
 except KeyboardInterrupt:
