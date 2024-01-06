@@ -17,6 +17,7 @@ DEFAULT_CONFIG = {
         },
         'horizon': 100
     }
+
 class DecRockSampling(MultiAgentEnv):
 
     def __init__(self, env_config={}):
