@@ -71,7 +71,6 @@ def plot_episode_mean_with_confidence_intervals(results):
     plt.title('Mean and Confidence Intervals of Arrays')
     plt.legend()
     plt.savefig(f'./results/plots/{EXPERIMENT_NAME}/avg_reward_per_episode_with_confidence_intervals.png')
-
     
 def plotter(results):
     plot_episode_reward_mean(results)
