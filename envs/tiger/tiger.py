@@ -3,6 +3,8 @@ from ray.rllib.env.multi_agent_env import MultiAgentEnv
 import random
 import numpy as np
 
+from envs.tiger.rewards import OPEN_TIGER_REWARD, OPEN_MONEY_REWARD, LISTEN_REWARD
+
 
 # Observation space: {0, 1} x {0, 1}
 NULL_OBS = np.array([0, 0])
@@ -83,13 +85,13 @@ class DecTigerEnv(MultiAgentEnv):
                     'left_door': '🐅',
                      agent_id: '😱'
                 })
-                return -50
+                return OPEN_TIGER_REWARD
             else:
                 self._set_render_options(**{
                     'left_door': '💰',
                     agent_id: '🤑'
                 })
-                return 10
+                return OPEN_MONEY_REWARD
 
         if action == OPEN_RIGHT:
             if self._is_tiger_right():
@@ -97,25 +99,25 @@ class DecTigerEnv(MultiAgentEnv):
                     'right_door': '🐅',
                     agent_id: '😱'
                 })
-                return -50
+                return OPEN_TIGER_REWARD
             else:
                 self._set_render_options(**{
                     'right_door': '💰',
                     agent_id: '🤑'
                 })
-                return 10
+                return OPEN_MONEY_REWARD
 
         if action == LISTEN_LEFT:
             self._set_render_options(**{
                 agent_id: '👈👂🏼'
             })
-            return -1
+            return LISTEN_REWARD
 
         if action == LISTEN_RIGHT:
             self._set_render_options(**{
                 agent_id: '👉👂🏻'
             })
-            return -1
+            return LISTEN_REWARD
 
     def _is_tiger_left(self):
         return np.array_equal(self.state, LEFT_OBS)
