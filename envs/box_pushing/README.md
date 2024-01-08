@@ -26,7 +26,7 @@ Agents can perform the following actions:
 - **Push Heavy Box (Collaborative)**: -20 points
 - **Getting a Light Box to the Target**: +500 points (awarded to all contributing agents)
 - **Getting a Heavy Box to the Target**: +1000 points (awarded to all contributing agents)
-> **Note**: All the reward function values can be changed in the `rewards.py` file in this directory
+> **Note**: All the reward function values can be changed in the [`rewards.py`](rewards.py) file in this directory
 
 ## Observation Space
 The observation space for each agent includes:

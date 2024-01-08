@@ -29,7 +29,7 @@ Each rover can perform the following actions:
 - **Rover1 Completes Sampling All Good Quality Rocks in Its Area**: +750 points.
 - **Rover2 Completes Sampling All Good Quality Rocks in Its Area**: +750 points.
 - **Both Rovers Complete Sampling All Good Quality Rocks in the Shared Area**: +750 points for each.
-> **Note**: All the reward function values can be changed in the `rewards.py` file in this directory
+> **Note**: All the reward function values can be changed in the [`rewards.py`](rewards.py) file in this directory
 
 ## Observation Space
 - **Position**: The rover's current position on the grid.
