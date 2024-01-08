@@ -13,6 +13,7 @@ class DecBoxPushing(MultiAgentEnv):
         num_heavy_boxes:int = env_config.get('num_heavy_boxes', 1)
         self.p_push:float = env_config.get('p_push', 0.8) # probability of pushing a box in the intended direction
         self.horizon:int = env_config.get('horizon', 300)
+        self.p_sense:float = env_config.get('p_sense', 1.0) # probability of sensing a box in the intended direction
 
         self.grid = Grid(num_agents, num_light_boxes, num_heavy_boxes, grid_size)
         self.translator = Translator(num_agents, num_light_boxes, num_heavy_boxes)
@@ -103,13 +104,15 @@ class DecBoxPushing(MultiAgentEnv):
             if self.translator.is_sense_light_box_action(action):
                 box_num = self.translator.get_sense_light_box_num(action)
                 box_id = f'light_box_{box_num}'
-                observations[agent_id]['sensed_box'] = self.grid.sense_light_box(agent_id, box_id)
+                if np.random.rand() < self.p_sense:
+                    observations[agent_id]['sensed_box'] = self.grid.sense_light_box(agent_id, box_id)
                 rewards[agent_id] = -1
             
             if self.translator.is_sense_heavy_box_action(action):
                 box_num = self.translator.get_sense_heavy_box_num(action)
                 box_id = f'heavy_box_{box_num}'
-                observations[agent_id]['sensed_box'] = self.grid.sense_heavy_box(agent_id, box_id)
+                if np.random.rand() < self.p_sense:
+                    observations[agent_id]['sensed_box'] = self.grid.sense_heavy_box(agent_id, box_id)
                 rewards[agent_id] = -1
             
             if self.translator.is_push_light_box_action(action):
