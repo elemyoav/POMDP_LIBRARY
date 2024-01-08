@@ -78,7 +78,7 @@ class Grid:
         if random.random() < prob:
             return self.rock_quality[rock_id]
         else:
-            return random.choice([GOOD_QUALITY, BAD_QUALITY])
+            return NULL_QUALITY
     
     def sample_rock(self, rover_id, rock_id):
         rock_position = self.rock_positions[rock_id]

@@ -5,6 +5,8 @@ from collections import OrderedDict
 from envs.box_pushing.translator import Translator
 from envs.box_pushing.grid import Grid
 
+from envs.box_pushing.rewards import IDLE_REWARD, MOVE_AGENT_REWARD, SENSE_LIGHT_BOX_REWARD, SENSE_HEAVY_BOX_REWARD, PUSH_LIGHT_BOX_REWARD, PUSH_HEAVY_BOX_REWARD, PUSH_LIGHT_BOX_SUCC_REWARD, PUSH_HEAVY_BOX_SUCC_REWARD
+
 
 class DecBoxPushing(MultiAgentEnv):
     def __init__(self, env_config={}):
@@ -63,7 +65,7 @@ class DecBoxPushing(MultiAgentEnv):
             done_state_end = self.grid.is_light_box_done(box_id)
 
         if done_state_start != done_state_end:
-            rewards[box_id] = 500
+            rewards[box_id] = PUSH_LIGHT_BOX_SUCC_REWARD
         else:
             rewards[box_id] = 0
         return rewards
@@ -78,7 +80,7 @@ class DecBoxPushing(MultiAgentEnv):
             done_state_end = self.grid.is_heavy_box_done(box_id)
 
             if done_state_start != done_state_end:
-                rewards[box_id] = 1000
+                rewards[box_id] = PUSH_HEAVY_BOX_SUCC_REWARD
             else:
                 rewards[box_id] = 0
         return rewards
@@ -94,30 +96,30 @@ class DecBoxPushing(MultiAgentEnv):
                                     })
             
             if self.translator.is_idle_action(action):
-                rewards[agent_id] = 0
+                rewards[agent_id] = IDLE_REWARD
 
             if self.translator.is_move_agent_action(action):
                 direction = self.translator.get_move_agent_direction(action)
                 self.grid.move_agent(agent_id, direction)
                 observations[agent_id]['location'] = self.grid.get_agent_location(agent_id)
-                rewards[agent_id] = -10
+                rewards[agent_id] = MOVE_AGENT_REWARD
             
             if self.translator.is_sense_light_box_action(action):
                 box_num = self.translator.get_sense_light_box_num(action)
                 box_id = f'light_box_{box_num}'
                 if np.random.rand() < self.p_sense:
                     observations[agent_id]['sensed_box'] = self.grid.sense_light_box(agent_id, box_id)
-                rewards[agent_id] = -1
+                rewards[agent_id] = SENSE_LIGHT_BOX_REWARD
             
             if self.translator.is_sense_heavy_box_action(action):
                 box_num = self.translator.get_sense_heavy_box_num(action)
                 box_id = f'heavy_box_{box_num}'
                 if np.random.rand() < self.p_sense:
                     observations[agent_id]['sensed_box'] = self.grid.sense_heavy_box(agent_id, box_id)
-                rewards[agent_id] = -1
+                rewards[agent_id] = SENSE_HEAVY_BOX_REWARD
             
             if self.translator.is_push_light_box_action(action):
-                rewards[agent_id] = -30
+                rewards[agent_id] = PUSH_LIGHT_BOX_REWARD
                 box_num = self.translator.get_push_light_box_num(action)
                 box_id = f'light_box_{box_num}'
                 direction = self.translator.get_push_light_box_direction(action)
@@ -126,7 +128,7 @@ class DecBoxPushing(MultiAgentEnv):
                     self.translator.add_light_box_pusher(box_id, direction, agent_id)
             
             if self.translator.is_push_heavy_box_action(action):
-                rewards[agent_id] = -20
+                rewards[agent_id] = PUSH_HEAVY_BOX_REWARD
                 box_num = self.translator.get_push_heavy_box_num(action)
                 box_id = f'heavy_box_{box_num}'
                 direction = self.translator.get_push_heavy_box_direction(action)
