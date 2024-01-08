@@ -18,6 +18,7 @@ In the Tiger environment, two agents are faced with a decision-making challenge.
 - **Opening a door with gold**: +10 points.
 - **Opening a door with the tiger**: -50 points.
 - **Listening action**: -1 point.
+> **Note**: All the reward function values can be changed in the `reward.py` file in this directory
 
 ## Observation Space
 The observation space is a binary 2-element tuple ({0,1} X {0,1}), where a '1' in any position indicates the observation that the tiger is behind the corresponding door.
