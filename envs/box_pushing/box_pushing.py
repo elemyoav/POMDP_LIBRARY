@@ -5,6 +5,7 @@ from collections import OrderedDict
 from envs.box_pushing.translator import Translator
 from envs.box_pushing.grid import Grid
 
+
 class DecBoxPushing(MultiAgentEnv):
     def __init__(self, env_config={}):
         num_agents:int = env_config.get('num_agents', 2) # number of agents
