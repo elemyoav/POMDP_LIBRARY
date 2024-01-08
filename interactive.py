@@ -12,5 +12,5 @@ for i in range(3):
         a0 = int(input("Choose action for agent 0: "))
         a1 = int(input("Choose action for agent 1: "))
         actions = {'agent_0': a0, 'agent_1': a1}
-        obs, reward, done, trunk, info = env.step(actions)
+        obs, reward, done, _, _ = env.step(actions)
         env.render()
