@@ -33,7 +33,7 @@ This will start the code with the algorithm and environment you supplied and wil
 The possible arguments are:
 
 - `--algo`: The algorithm to use (default 'ppo', choose from 'ppo', 'marwil', 'appo', 'impala', 'bcc', 'cql', 'dqn', 'sacc').
-- `--env`: The environment for training (default 'box_pushing', choose from 'dec_box_pushing', 'box_pushing', 'dec_tiger', 'tiger', 'dec_rock_sampling', 'rock_sampling').
+- `--env`: The environment for training (default 'box_pushing', choose from 'dec_box_pushing', 'box_pushing', 'dec_tiger', 'tiger').
 - `--training_iterations`: Number of training iterations (default 2000).
 - `--gamma`: Discount factor for future rewards (default 0.95).
 - `--lr`: Learning rate (default 5e-5).
