@@ -5,6 +5,8 @@ from envs.rock_sampling.grid import Grid, NULL_QUALITY, BAD_QUALITY, GOOD_QUALIT
 from envs.rock_sampling.translator import Translator
 from collections import OrderedDict
 
+from envs.rock_sampling.rewards import IDLE_REWARD, MOVE_REWARD, SENSE_REWARD, GOOD_SAMPLE_REWARD, BAD_SAMPLE_REWARD, ROVER_AREA_CLEAR_REWARD
+
 
 DEFAULT_CONFIG = {
         'grid_config': {
@@ -66,19 +68,19 @@ class DecRockSampling(MultiAgentEnv):
             })
 
             if self.translator.is_idle_action(action):
-                rewards[agent_id] = 0
+                rewards[agent_id] = IDLE_REWARD
             
             if self.translator.is_move_action(action):
                 direction = self.translator.get_move_direction(action)
                 self.grid.move_rover(agent_id, direction)
                 observations[agent_id]['position'] = self.grid.get_rover_position(agent_id)
-                rewards[agent_id] = -1
+                rewards[agent_id] = MOVE_REWARD
             
             if self.translator.is_sense_action(action):
                 rock_id = self.translator.get_sensed_rock_id(action)
                 rock_quality = self.grid.sample_rock(agent_id, rock_id)
                 observations[agent_id]['rock_quality'] = rock_quality
-                rewards[agent_id] = -5
+                rewards[agent_id] = SENSE_REWARD
             
             if self.translator.is_sample_action(action):
                 rover_1_area_clear_before = self.grid.is_rover1_area_clear()
@@ -89,7 +91,7 @@ class DecRockSampling(MultiAgentEnv):
                 rock_quality = self.grid.sample_rock(agent_id, rock_id)
 
                 if rock_quality is None or rock_quality == 'Bad':
-                    rewards[agent_id] = -500
+                    rewards[agent_id] = BAD_SAMPLE_REWARD
                     continue
 
                 rover_1_area_clear_after = self.grid.is_rover1_area_clear()
@@ -97,15 +99,15 @@ class DecRockSampling(MultiAgentEnv):
                 shared_area_clear_after = self.grid.is_shared_area_clear()
 
                 if rover_1_area_clear_before != rover_1_area_clear_after:
-                    rewards['rover1'] = 750
+                    rewards['rover1'] = ROVER_AREA_CLEAR_REWARD
                     continue
                 if rover_2_area_clear_before != rover_2_area_clear_after:
-                    rewards['rover2'] = 750
+                    rewards['rover2'] = ROVER_AREA_CLEAR_REWARD
                     continue
                 
                 if shared_area_clear_before != shared_area_clear_after:
-                    rewards['rover1'] = 750
-                    rewards['rover2'] = 750
+                    rewards['rover1'] = ROVER_AREA_CLEAR_REWARD
+                    rewards['rover2'] = ROVER_AREA_CLEAR_REWARD
                     continue
             
         dones['__all__'] = self.grid.is_game_over() or self.current_step >= self.horizon
