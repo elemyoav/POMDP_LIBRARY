@@ -6,7 +6,16 @@ ppo-dec-box-pushing:
     config:
         # Works for both torch and tf.
         framework: torch
-        # Make analogous to old v4 + NoFrameskip.
+
+        env_config:
+            env_config:
+                num_agents: 2
+                num_light_boxes: 1
+                num_heavy_boxes: 1
+                p_push: 0.8
+                p_sense: 1.0
+                horizon: 300
+                
         lambda: 0.95
         gamma: 0.99
         lr: 0.0001
