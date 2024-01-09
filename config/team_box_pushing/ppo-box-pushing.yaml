@@ -1,4 +1,4 @@
-ppo-box-pushing:
+ppo-team-box-pushing:
     env: envs.box_pushing.team_problem.BoxPushing
     run: PPO
     stop:
