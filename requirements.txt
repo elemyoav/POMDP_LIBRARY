@@ -38,6 +38,7 @@ google-auth-oauthlib==1.2.0
 google-pasta==0.2.0
 googleapis-common-protos==1.62.0
 gpustat==1.1.1
+gputils==1.0.6
 grpcio==1.60.0
 gym==0.26.2
 gym-notices==0.0.8
