@@ -17,7 +17,7 @@ To begin, set up your environment and install required packages:
 ### Step 2: Configure Your Training Environment
 For training setup:
 
-1. Visit the config directory (link provided) and choose your desired environment and algorithm based on the YAML file.
+1. Visit [config](./config) and choose your desired environment and algorithm based on the YAML file.
 2. Adjust the values in the YAML file as needed.
 
 ### Step 3: Execute Training
@@ -45,5 +45,5 @@ Hint: The complete command will be part of the stdout from the train command.
 ### Step 5: Modify Environment Settings
 For environment adjustments:
 
-1. Navigate to the env directory (link provided) and select the environment you wish to modify.
+1. Navigate to [env](./envs) and select the environment you wish to modify.
 2. To alter rewards, open the rewards.py file and adjust the values as needed.
