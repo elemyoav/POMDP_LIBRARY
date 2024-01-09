@@ -1,61 +1,46 @@
-# How To Use The Code
+# How to Use the Code
 
-## Setting Up the Environment
+## Getting Started
 
-Once you cloned th repository on your local machine cd into it and run the following commands in the terminal:
+### Step 1: Download All Necessary Dependencies
+To begin, set up your environment and install required packages:
 
-```bash
-python3 -m venv venv
-```
-```bash
-source ./venv/bin/activate
-```
-```bash
-pip install -r requirements.txt
-```
+1. Create and activate a virtual environment:
+   - python3 -m venv venv
+   - source ./venv/bin/activate
 
-## Running the Code
+2. Install dependencies from the requirements file:
+   - pip install -r requirements.txt
 
-There are two entry points to the code: `train.py` and `run.py`.
+## How to Train an Agent
 
-### Starting with `train.py`:
+### Step 2: Configure Your Training Environment
+For training setup:
 
-Run the following command:
+1. Visit the config directory (link provided) and choose your desired environment and algorithm based on the YAML file.
+2. Adjust the values in the YAML file as needed.
 
-```bash
-python3 train.py --args...
-```
+### Step 3: Execute Training
+To train your agent:
 
-This will start the code with the algorithm and environment you supplied and will train the code.
+- Run the command:
+  - rllib train file /path/to/your/file.yaml
 
-### Arguments Explained:
+Note: This command trains the algorithm as per your configuration. Post-training, the algorithm will be saved in the ~/ray_results directory. The terminal's stdout will display the full path.
 
-The possible arguments are:
+## How to Visualize Training Results
 
-- `--algo`: The algorithm to use (default 'ppo', choose from 'ppo', 'marwil', 'appo', 'impala', 'bcc', 'cql', 'dqn', 'sacc').
-- `--env`: The environment for training (default 'box_pushing', choose from 'dec_box_pushing', 'box_pushing', 'dec_tiger', 'tiger').
-- `--training_iterations`: Number of training iterations (default 2000).
-- `--gamma`: Discount factor for future rewards (default 0.95).
-- `--lr`: Learning rate (default 5e-5).
-- `--batch_size`: Size of the training batch (default 32).
-- `--epsilon`, `--epsilon_decay`, `--epsilon_min`: Parameters for exploration strategy.
-- `--framework`: The underlying framework (default 'torch', possibilities are 'torch', 'tf', 'tf2').
-- `--seed`: Random seed (default 0).
-- `--log_level`: Logging level (default 'ERROR').
+### Step 4: Visualize Outcomes
+For result visualization:
 
+- Execute the command:
+  - tensorboard --logdir ~/ray_results/<experiment_name>
 
-## Reviewing Results
+- Then, open your web browser and navigate to localhost:6006 to view the run metrics.
 
-After running the code, check the `results` directory. It contains two subdirectories: `checkpoints` and `plots`. Metrics on the run can be found in `results/plots/$ALGO_$ENV/$ALGO_$ENV_$DATE/`., and the trained algorithm is saved under `results/checkpoints/$ALGO_$ENV/$ALGO_$ENV_$DATE/`.
+Hint: The complete command will be part of the stdout from the train command.
 
-### Using `run.py`:
+## How to Change Environment Settings
 
-To load the trained algorithm and policies, modify the `run.py` file with the path to the checkpoint and the desired environment.
-
-> **Note**: The `run.py` file is just an example. Use it as a template to play around with and understand how to use the restored algorithm.
-
-## Further Documentation
-
-For more information on how to use the `run.py` file and algorithms, refer to the [RLlib documentation](https://docs.ray.io/en/master/rllib/index.html). Consult the algorithms page in the documentation to understand which algorithms support multiagent training.
-
-if you want to learn how to use rllib please try this [RLlib Course](https://applied-rl-course.netlify.app/)
+### Step 5: Modify Environment Settings
+For environment adjustments:
