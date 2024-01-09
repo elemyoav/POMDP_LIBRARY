@@ -8,10 +8,8 @@ impala-dec-box-pushing:
         # Works for both torch and tf.
         framework: torch
 
-        # 4-agent MA cartpole.
-        # env_config:
-        #   config:
-        #     num_agents: 4
+        gamma: 0.99
+        lr: 0.0001
 
         num_envs_per_worker: 5
         num_workers: 4

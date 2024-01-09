@@ -5,6 +5,8 @@ ppo-team-tiger:
         # Works for both torch and tf.
         framework: torch
         lambda: 0.95
+        gamma: 0.99
+        lr: 0.0001
         kl_coeff: 0.5
         clip_rewards: False
         clip_param: 0.1

@@ -8,6 +8,9 @@ appo-dec-rock-sampling:
         # Works for both torch and tf.
         framework: torch
 
+        gamma: 0.99
+        lr: 0.0001
+
         # 4-agent MA cartpole.
         env_config:
           config:
