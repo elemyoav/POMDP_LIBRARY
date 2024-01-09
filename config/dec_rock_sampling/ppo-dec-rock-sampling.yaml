@@ -1,6 +1,8 @@
 ppo-dec-rock-sampling:
     env: envs.rock_sampling.rock_samling.DecRockSamplingEnv
     run: PPO
+    stop:
+        timesteps_total: 200000
     config:
         # Works for both torch and tf.
         framework: torch

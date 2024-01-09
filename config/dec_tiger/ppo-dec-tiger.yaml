@@ -1,6 +1,8 @@
 ppo-dec-tiger:
     env: envs.tiger.tiger.DecTiger
     run: PPO
+    stop:
+        timesteps_total: 200000
     config:
 
         framework: torch

@@ -2,7 +2,6 @@ appo-dec-rock-sampling:
     env: envs.rock_sampling.rock_samling.DecRockSamplingEnv
     run: APPO
     stop:
-        sampler_results/episode_reward_mean: 600  # 600 / 4 (==num_agents) = 150
         timesteps_total: 200000
     config:
         # Works for both torch and tf.

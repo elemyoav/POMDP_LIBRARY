@@ -1,6 +1,8 @@
 ppo-box-pushing:
     env: envs.box_pushing.team_problem.BoxPushing
     run: PPO
+    stop:
+        timesteps_total: 200000
     config:
         # Works for both torch and tf.
         framework: torch
