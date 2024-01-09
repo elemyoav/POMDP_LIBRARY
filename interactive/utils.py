@@ -10,7 +10,7 @@ import envs
 
 def get_env(env_name):
     if env_name == 'dec_tiger':
-        return envs.DecTigerEnv()
+        return envs.DecTiger()
     elif env_name == 'dec_rock_sampling':
         return envs.DecRockSampling()
     elif env_name == 'dec_box_pushing':

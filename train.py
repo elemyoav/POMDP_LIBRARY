@@ -1,10 +1,11 @@
-import src.env_creators as env_creators # NEVER REMOVE
+from src.env_creators import register
 from tqdm import tqdm
 from src.plotter import plotter
 import os
 from src.algorithm_config_generator import ALGORITHM, EXPERIMENT_NAME, TRAINING_ITERATIONS
 from pprint import pprint
 
+register()
 path = os.path.join(os.getcwd(), 'results', 'plots', EXPERIMENT_NAME)
 if not os.path.exists(path):
     print(

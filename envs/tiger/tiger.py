@@ -25,7 +25,7 @@ AGENT_1 = '🕵🏻'
 LEFT_DOOR = '🚪'
 RIGHT_DOOR = '🚪'
 
-class DecTigerEnv(MultiAgentEnv):
+class DecTiger(MultiAgentEnv):
     def __init__(self, config={}):
 
         # Open left, open right, listen_left, listen_right
