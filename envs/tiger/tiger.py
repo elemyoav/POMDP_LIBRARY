@@ -4,6 +4,7 @@ import random
 import numpy as np
 
 from envs.tiger.rewards import OPEN_TIGER_REWARD, OPEN_MONEY_REWARD, LISTEN_REWARD
+from envs.tiger.translator import Translator
 
 
 # Observation space: {0, 1} x {0, 1}
@@ -38,6 +39,7 @@ class DecTigerEnv(MultiAgentEnv):
         self.state = NULL_OBS
         self._agent_ids = ['agent_0', 'agent_1']
 
+        self.translator = Translator()
         super().__init__()
 
     def reset(self, *, seed=None, options=None,):
@@ -79,7 +81,7 @@ class DecTigerEnv(MultiAgentEnv):
         )
 
     def _agent_reward(self, agent_id, action):
-        if action == OPEN_LEFT:
+        if self.translator.is_open_left(action):
             if self._is_tiger_left():
                 self._set_render_options(**{
                     'left_door': '🐅',
@@ -93,7 +95,7 @@ class DecTigerEnv(MultiAgentEnv):
                 })
                 return OPEN_MONEY_REWARD
 
-        if action == OPEN_RIGHT:
+        if self.translator.is_open_right(action):
             if self._is_tiger_right():
                 self._set_render_options(**{
                     'right_door': '🐅',
@@ -107,13 +109,13 @@ class DecTigerEnv(MultiAgentEnv):
                 })
                 return OPEN_MONEY_REWARD
 
-        if action == LISTEN_LEFT:
+        if self.translator.is_listen_left(action):
             self._set_render_options(**{
                 agent_id: '👈👂🏼'
             })
             return LISTEN_REWARD
 
-        if action == LISTEN_RIGHT:
+        if self.translator.is_listen_right(action):
             self._set_render_options(**{
                 agent_id: '👉👂🏻'
             })
@@ -126,14 +128,14 @@ class DecTigerEnv(MultiAgentEnv):
         return np.array_equal(self.state, RIGHT_OBS)
 
     def _agent_obs(self, agent_id, action):
-        if action == OPEN_LEFT or action == OPEN_RIGHT:
+        if self.translator.is_open_action(action):
             return self.state
         return self._listen_obs(action)
 
     def _listen_obs(self, action):
         # this function assumes the action is either listen left or listen right
         p = 0
-        if (action == LISTEN_LEFT and self._is_tiger_left()) or (action == LISTEN_RIGHT and self._is_tiger_right()):
+        if (self.translator.is_listen_left(action) and self._is_tiger_left()) or (self.translator.is_listen_right(action) and self._is_tiger_right()):
             p = 0.75
 
         if random.random() < p:
