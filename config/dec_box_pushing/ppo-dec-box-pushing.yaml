@@ -1,8 +1,8 @@
 ppo-dec-box-pushing:
     env: envs.box_pushing.box_pushing.DecBoxPushing
     run: PPO
-      stop:
-        timesteps_total: 200000
+    stop:
+      timesteps_total: 200000
     config:
         # Works for both torch and tf.
         framework: torch
