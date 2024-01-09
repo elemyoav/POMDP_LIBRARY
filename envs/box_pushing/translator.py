@@ -170,3 +170,16 @@ class Translator:
             'light_boxes_succ_pushers': light_boxes_succ_pushers,
             'heavy_boxes_succ_pushers': heavy_boxes_succ_pushers
         }
+    
+    def get_all_actions(self):
+        actions = [ 'IDLE', 'MOVE_LEFT', 'MOVE_RIGHT', 'MOVE_UP', 'MOVE_DOWN']
+        actions += [f'SENSE_LIGHT_BOX_{i}' for i in range(self.num_light_boxes)]
+        actions += [f'SENSE_HEAVY_BOX_{i}' for i in range(self.num_heavy_boxes)]
+
+        for i in range(self.num_light_boxes):
+            actions += [f'PUSH_LIGHT_BOX_{i}_LEFT', f'PUSH_LIGHT_BOX_{i}_RIGHT', f'PUSH_LIGHT_BOX_{i}_UP', f'PUSH_LIGHT_BOX_{i}_DOWN']
+        
+        for i in range(self.num_heavy_boxes):
+            actions += [f'PUSH_HEAVY_BOX_{i}_LEFT', f'PUSH_HEAVY_BOX_{i}_RIGHT', f'PUSH_HEAVY_BOX_{i}_UP', f'PUSH_HEAVY_BOX_{i}_DOWN']
+        
+        return actions

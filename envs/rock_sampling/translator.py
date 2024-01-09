@@ -31,3 +31,14 @@ class Translator:
     
     def get_sampled_rock_id(self, action):
         return action - 5 - self.num_rocks
+    
+    def get_all_actions(self):
+        actions = ['IDLE', 'MOVE_UP', 'MOVE_DOWN', 'MOVE_LEFT', 'MOVE_RIGHT']
+        
+        for i in range(self.num_rocks):
+            actions.append(f'SENSE_ROCK_{i}')
+        
+        for i in range(self.num_rocks):
+            actions.append(f'SAMPLE_ROCK_{i}')
+        
+        return actions

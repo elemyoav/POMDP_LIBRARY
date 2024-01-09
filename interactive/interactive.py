@@ -1,4 +1,5 @@
 from utils import get_user_input, print_info, ENV, NUM_GAMES
+from time import sleep
 
 def main():
     """
@@ -22,16 +23,17 @@ def main():
     """
     ENV.render()
     for game_index in range(NUM_GAMES):
-        done = False
+        done = {'__all__': False}
         ENV.reset()
         print(f"========================================Starting game {game_index}========================================")
-        while not done:
+        while not done['__all__']:
             action_0 = get_user_input('agent_0')
             action_1 = get_user_input('agent_1')
             actions = {'agent_0': action_0, 'agent_1': action_1}
             obs, reward, done, _, _ = ENV.step(actions)
             print_info(obs, reward, done)
             ENV.render()
+            sleep(1)
         print(f"========================================Game {game_index} over========================================")
 
 if __name__ == '__main__':
