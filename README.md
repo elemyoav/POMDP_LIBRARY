@@ -44,3 +44,6 @@ Hint: The complete command will be part of the stdout from the train command.
 
 ### Step 5: Modify Environment Settings
 For environment adjustments:
+
+1. Navigate to the env directory (link provided) and select the environment you wish to modify.
+2. To alter rewards, open the rewards.py file and adjust the values as needed.
