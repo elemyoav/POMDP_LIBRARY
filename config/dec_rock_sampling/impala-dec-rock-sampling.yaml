@@ -1,6 +1,6 @@
 impala-dec-rock-sampling:
     #env: ray.rllib.examples.env.multi_agent.MultiAgentCartPole
-    env: envs.rock_sampling.rock_samling.DecRockSamplingEnv
+    env: envs.rock_sampling.rock_sampling.DecRockSampling
     run: IMPALA
     stop:
         timesteps_total: 200000
