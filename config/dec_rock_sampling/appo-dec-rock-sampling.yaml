@@ -1,19 +1,14 @@
 appo-dec-rock-sampling:
-    env: envs.rock_sampling.rock_samling.DecRockSamplingEnv
+    env: envs.rock_sampling.rock_sampling.DecRockSampling
     run: APPO
     stop:
-        timesteps_total: 200000
+        timesteps_total: 2
     config:
         # Works for both torch and tf.
         framework: torch
 
         gamma: 0.99
         lr: 0.0001
-
-        # 4-agent MA cartpole.
-        env_config:
-          config:
-            num_agents: 4
 
         num_envs_per_worker: 5
         num_workers: 4
