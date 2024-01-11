@@ -10,7 +10,11 @@ class Grid:
 
     def __init__(self, grid_config):
 
-        self.num_rocks = grid_config['num_rocks']
+        self.num_rocks_rover_1 = grid_config['num_rocks_rover_1']
+        self.num_rocks_rover_2 = grid_config['num_rocks_rover_2']
+        self.num_rocks_shared = grid_config['num_rocks_shared']
+        self.num_rocks = self.num_rocks_rover_1 + self.num_rocks_rover_2 + self.num_rocks_shared
+        
         self.area_width = grid_config['width'] # This is shared across all agents
         self.rover1_area_height = grid_config['rover1_height']
         self.shared_area_height = grid_config['shared_height']
@@ -25,11 +29,25 @@ class Grid:
         self.reset_board()
 
     
-    def reset_board(self):
-        self.rock_positions = random.sample(self.grid, self.num_rocks)
+    def sample_rock_positions(self):
+        self.rock_positions = random.sample(self.rover_1_grid, self.num_rocks_rover_1) + \
+                              random.sample(self.rover_2_grid, self.num_rocks_rover_2) + \
+                              random.sample(self.shared_grid, self.num_rocks_shared)
+        
+    def sample_quality(self):
+        self.rock_quality = [ random.choice([BAD_QUALITY, GOOD_QUALITY]) for _ in range(self.num_rocks) ]
+
+    def sample_rover1_position(self):
         self.rover1_position = random.choice(self.rover_1_grid)
+    
+    def sample_rover2_position(self):
         self.rover2_position = random.choice(self.rover_2_grid)
-        self.rock_quality = [ GOOD_QUALITY for _ in range(self.num_rocks) ]
+
+    def reset_board(self):
+        self.sample_rock_positions()
+        self.sample_rover1_position()
+        self.sample_rover2_position()
+        self.sample_quality()
 
     def get_rover1_position(self):
         return self.rover1_position

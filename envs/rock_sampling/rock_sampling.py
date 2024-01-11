@@ -22,15 +22,17 @@ class DecRockSampling(MultiAgentEnv):
         self.translator = Translator(self.grid.get_num_rocks())
         self._agent_ids = ['agent_0', 'agent_1']
 
-
-        self.observation_space = gym.spaces.Dict({
+        space_dict = {
             'position': gym.spaces.MultiDiscrete([self.grid.area_width, self.grid.area_height]),
-            'rock_quality': gym.spaces.Discrete(3),
-            'rock_positions': gym.spaces.Dict({
+            'rock_quality': gym.spaces.Discrete(3)
+        }
+
+        space_dict.update({
                 f'rock_{i}_position': gym.spaces.MultiDiscrete([self.grid.area_width, self.grid.area_height])\
                         for i in range(self.grid.get_num_rocks())
-            })
         })
+
+        self.observation_space = gym.spaces.Dict( OrderedDict( space_dict ))
 
         self.action_space = gym.spaces.Discrete(1 + # Idle action
                                                 4 + # Move actions
@@ -41,16 +43,21 @@ class DecRockSampling(MultiAgentEnv):
     def reset(self, *, seed=None, options=None):
         self.current_step = 0
         self.grid.reset_board()
+        observations = {}
 
-        observations = {
-            agent_id: OrderedDict({
+        for agent_id in self._agent_ids:
+            agent_obs = {
                 'position': self.grid.get_rover_position(agent_id),
-                'rock_quality': NULL_QUALITY,
-                'rock_positions': OrderedDict({
-                    f'rock_{i}_position': self.grid.get_rock_position(i) for i in range(self.grid.get_num_rocks())
-                })
-            }) for agent_id in self._agent_ids
-        }
+                'rock_quality': NULL_QUALITY
+            }
+
+            agent_obs.update({
+                f'rock_{i}_position': self.grid.get_rock_position(i) for i in range(self.grid.get_num_rocks())
+            })
+
+            agent_obs = OrderedDict(agent_obs)
+
+            observations[agent_id] = agent_obs 
 
         return observations, {}
     
@@ -60,13 +67,16 @@ class DecRockSampling(MultiAgentEnv):
 
         for agent_id, action in action_dict.items():
 
-            observations[agent_id] = OrderedDict({
+            observations[agent_id] = {
                 'position': self.grid.get_rover_position(agent_id),
-                'rock_quality': NULL_QUALITY,
-                'rock_positions': OrderedDict({
-                    f'rock_{i}_position': self.grid.get_rock_position(i) for i in range(self.grid.get_num_rocks())
-                })
+                'rock_quality': NULL_QUALITY
+            }
+
+            observations[agent_id].update({
+                f'rock_{i}_position': self.grid.get_rock_position(i) for i in range(self.grid.get_num_rocks())
             })
+
+            observations[agent_id] = OrderedDict(observations[agent_id])
 
             if self.translator.is_idle_action(action):
                 rewards[agent_id] = IDLE_REWARD

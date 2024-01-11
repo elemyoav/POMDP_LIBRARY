@@ -17,7 +17,9 @@ DEFAULT_CONFIG = {
             'rover1_height': 2,
             'shared_height': 1,
             'rover2_height': 2,
-            'num_rocks': 3,
+            'num_rocks_rover_1': 1,
+            'num_rocks_rover_2': 1,
+            'num_rocks_shared': 1,
             'observation_quality_function': default_observation_quality_function
         },
         'horizon': 100
