@@ -142,3 +142,6 @@ class Grid:
             return 'rover2'
         elif rock_position in self.shared_grid:
             return 'shared'
+    
+    def get_rock_position(self, rock_id):
+        return array(self.rock_positions[rock_id])
