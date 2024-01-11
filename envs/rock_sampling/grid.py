@@ -26,6 +26,7 @@ class Grid:
         self.rover_1_grid = [ (x,y) for x in range(self.area_width) for y in range(self.rover1_area_height) ]
         self.shared_grid = [ (x,y) for x in range(self.area_width) for y in range(self.rover1_area_height, self.rover1_area_height + self.shared_area_height) ]
         self.rover_2_grid = [ (x,y) for x in range(self.area_width) for y in range(self.rover1_area_height + self.shared_area_height, self.area_height) ]
+        self.sample_rock_positions() # Rock positions are constants for all episodes
         self.reset_board()
 
     
@@ -44,7 +45,7 @@ class Grid:
         self.rover2_position = random.choice(self.rover_2_grid)
 
     def reset_board(self):
-        self.sample_rock_positions()
+
         self.sample_rover1_position()
         self.sample_rover2_position()
         self.sample_quality()
