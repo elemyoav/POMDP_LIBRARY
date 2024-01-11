@@ -2,7 +2,7 @@ ppo-team-rock-sampling:
     env: envs.rock_sampling.team_problem.RockSampling
     run: PPO
     stop:
-        timesteps_total: 200000
+        timesteps_total: 2
     config:
         # Works for both torch and tf.
         framework: torch
