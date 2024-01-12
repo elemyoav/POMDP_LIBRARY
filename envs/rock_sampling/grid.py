@@ -36,7 +36,7 @@ class Grid:
                               random.sample(self.shared_grid, self.num_rocks_shared)
         
     def sample_quality(self):
-        self.rock_quality = [ random.choice([BAD_QUALITY, GOOD_QUALITY]) for _ in range(self.num_rocks) ]
+        self.rock_quality = [ GOOD_QUALITY for _ in range(self.num_rocks) ]
 
     def sample_rover1_position(self):
         self.rover1_position = random.choice(self.rover_1_grid)
@@ -90,14 +90,14 @@ class Grid:
             self.rover2_position = new_position
 
     
-    def sense_rock(self, rock_id):
-        rock_position = self.rock_positions[rock_id]
-        prob = self.observation_quality_function(self.rover1_position, rock_position)
+    # def sense_rock(self, rock_id):
+    #     rock_position = self.rock_positions[rock_id]
+    #     prob = self.observation_quality_function(self.rover1_position, rock_position)
 
-        if random.random() < prob:
-            return self.rock_quality[rock_id]
-        else:
-            return NULL_QUALITY
+    #     if random.random() < prob:
+    #         return self.rock_quality[rock_id]
+    #     else:
+    #         return NULL_QUALITY
     
     def sample_rock(self, rover_id, rock_id):
         rock_position = self.rock_positions[rock_id]

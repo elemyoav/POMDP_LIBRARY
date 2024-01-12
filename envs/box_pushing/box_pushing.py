@@ -35,7 +35,8 @@ class DecBoxPushing(MultiAgentEnv):
         
         self.observation_space = gym.spaces.Dict({
             'location': gym.spaces.MultiDiscrete([*grid_size]),
-            'sensed_box': gym.spaces.Discrete(2)  # Boolean (True/False)
+            'sensed_box': gym.spaces.Discrete(2),  # Boolean (True/False)
+            'target_location': gym.spaces.MultiDiscrete([*grid_size])
         })
         
         super().__init__()
@@ -49,7 +50,8 @@ class DecBoxPushing(MultiAgentEnv):
         observations = {
             agent_id: OrderedDict({
                 'location': self.grid.get_agent_location(agent_id),
-                'sensed_box': 0
+                'sensed_box': 0,
+                'target_location': self.grid.get_target_location(),
             }) for agent_id in self._agent_ids
         }
 
@@ -92,7 +94,8 @@ class DecBoxPushing(MultiAgentEnv):
         for agent_id, action in action_dict.items():
             observations[agent_id] = OrderedDict({
                                         'location': self.grid.get_agent_location(agent_id),
-                                        'sensed_box': 0
+                                        'sensed_box': 0,
+                                        'target_location': self.grid.get_target_location(),
                                     })
             
             if self.translator.is_idle_action(action):

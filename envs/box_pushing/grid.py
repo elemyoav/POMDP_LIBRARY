@@ -38,6 +38,9 @@ class Grid:
 
         self.target_location = self.get_random_location_not_on_boxes()
 
+    def get_target_location(self):
+        return np.array(self.target_location)
+    
     def is_target_location(self, location):
         return np.array_equal(location, self.target_location)
     
