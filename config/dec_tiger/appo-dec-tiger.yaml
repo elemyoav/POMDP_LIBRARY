@@ -2,7 +2,7 @@ appo-dec-tiger:
     env: envs.tiger.tiger.DecTiger
     run: APPO
     stop:
-        timesteps_total: 200000
+        timesteps_total: 30000000
     config:
         # Works for both torch and tf.
         framework: torch
