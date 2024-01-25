@@ -27,6 +27,8 @@ class Grid:
         self.shared_grid = [ (x,y) for x in range(self.area_width) for y in range(self.rover1_area_height, self.rover1_area_height + self.shared_area_height) ]
         self.rover_2_grid = [ (x,y) for x in range(self.area_width) for y in range(self.rover1_area_height + self.shared_area_height, self.area_height) ]
         self.sample_rock_positions() # Rock positions are constants for all episodes
+        self.sample_quality() # Rock quality is constant for all episodes
+        self.original_rock_quality = self.rock_quality.copy()
         self.reset_board()
 
     
@@ -36,7 +38,14 @@ class Grid:
                               random.sample(self.shared_grid, self.num_rocks_shared)
         
     def sample_quality(self):
-        self.rock_quality = [ GOOD_QUALITY for _ in range(self.num_rocks) ]
+        # make 1 rock in each grid bad quality
+        self.rock_quality = [GOOD_QUALITY] * self.num_rocks
+        self.rock_quality[random.choice(range(self.num_rocks_rover_1))] = BAD_QUALITY
+        self.rock_quality[random.choice(range(self.num_rocks_rover_1, self.num_rocks_rover_1 + self.num_rocks_rover_2))] = BAD_QUALITY
+        self.rock_quality[random.choice(range(self.num_rocks_rover_1 + self.num_rocks_rover_2, self.num_rocks_rover_1 + self.num_rocks_rover_2 + self.num_rocks_shared))] = BAD_QUALITY
+    
+    def reset_rock_quality(self):
+        self.rock_quality = self.original_rock_quality.copy()
 
     def sample_rover1_position(self):
         self.rover1_position = random.choice(self.rover_1_grid)
@@ -48,7 +57,7 @@ class Grid:
 
         self.sample_rover1_position()
         self.sample_rover2_position()
-        self.sample_quality()
+        self.reset_rock_quality()
 
     def get_rover1_position(self):
         return self.rover1_position

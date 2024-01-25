@@ -13,14 +13,14 @@ def default_observation_quality_function(pos1, pos2):
 
 DEFAULT_CONFIG = {
         'grid_config': {
-            'width': 3,
-            'rover1_height': 2,
-            'shared_height': 1,
-            'rover2_height': 2,
-            'num_rocks_rover_1': 1,
-            'num_rocks_rover_2': 1,
-            'num_rocks_shared': 1,
+            'width': 5,
+            'rover1_height': 3,
+            'shared_height': 2,
+            'rover2_height': 3,
+            'num_rocks_rover_1': 3,
+            'num_rocks_rover_2': 3,
+            'num_rocks_shared': 3,
             'observation_quality_function': default_observation_quality_function
         },
-        'horizon': 100
+        'horizon': 3000
     }

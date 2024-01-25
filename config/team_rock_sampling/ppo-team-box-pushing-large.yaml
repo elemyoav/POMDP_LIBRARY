@@ -1,0 +1,43 @@
+ppo-team-rock-sampling:
+    env: envs.rock_sampling.team_problem.RockSampling
+    run: PPO
+    stop:
+        timesteps_total: 3000000
+    config:
+        # env_config:
+        #   grid_config:
+        #     num_rocks_rover_1: 2
+        #     num_rocks_rover_2: 2
+        #     num_rocks_shared: 2
+        #     width: 5
+        #     rover1_height: 3
+        #     rover2_height: 2
+        #     shared_height: 3
+
+        # Works for both torch and tf.
+        framework: torch
+        lambda: 0.95
+        gamma: 
+            grid_search:
+                - 0.9
+                - 0.95
+                - 0.99
+        lr:
+            grid_search:
+                - 0.001
+                - 0.0001
+                - 0.00001
+        kl_coeff: 0.5
+        clip_rewards: False
+        clip_param: 0.1
+        vf_clip_param: 10.0
+        entropy_coeff: 0.01
+        train_batch_size: 5000
+        rollout_fragment_length: 100
+        sgd_minibatch_size: 500
+        num_sgd_iter: 10
+        num_envs_per_worker: 5
+        batch_mode: truncate_episodes
+        observation_filter: NoFilter
+        model:
+            vf_share_layers: true
